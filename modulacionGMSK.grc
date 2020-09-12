@@ -1,0 +1,724 @@
+options:
+  parameters:
+    author: pilard034
+    category: '[GRC Hier Blocks]'
+    cmake_opt: ''
+    comment: ''
+    copyright: ''
+    description: ''
+    gen_cmake: 'On'
+    gen_linking: dynamic
+    generate_options: qt_gui
+    hier_block_src_path: '.:'
+    id: modulacionGMSK
+    max_nouts: '0'
+    output_language: python
+    placement: (0,0)
+    qt_qss_theme: ''
+    realtime_scheduling: ''
+    run: 'True'
+    run_command: '{python} -u {filename}'
+    run_options: prompt
+    sizing_mode: fixed
+    thread_safe_setters: ''
+    title: Not titled yet
+    window_size: 4096,4096
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 8]
+    rotation: 0
+    state: enabled
+
+blocks:
+- name: BT
+  id: variable
+  parameters:
+    comment: ''
+    value: 350m
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [433, 86]
+    rotation: 0
+    state: disabled
+- name: Sps
+  id: variable
+  parameters:
+    comment: ''
+    value: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [530, 81]
+    rotation: 0
+    state: enabled
+- name: f
+  id: variable_qtgui_range
+  parameters:
+    comment: ''
+    gui_hint: ''
+    label: ''
+    min_len: '200'
+    orient: Qt.Horizontal
+    rangeType: float
+    start: '10000'
+    step: '100'
+    stop: '100000'
+    value: '56000'
+    widget: counter_slider
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1045, 6]
+    rotation: 0
+    state: true
+- name: fc
+  id: variable
+  parameters:
+    comment: ''
+    value: 32M
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [289, 18]
+    rotation: 0
+    state: disabled
+- name: gaussian_filter_taps
+  id: variable
+  parameters:
+    comment: ''
+    value: wform.rrcos(Sps,nTaps,1)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [614, 18]
+    rotation: 0
+    state: enabled
+- name: nTaps
+  id: variable
+  parameters:
+    comment: ''
+    value: '16'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [532, 17]
+    rotation: 0
+    state: true
+- name: samp_rate
+  id: variable
+  parameters:
+    comment: ''
+    value: '32000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [184, 12]
+    rotation: 0
+    state: enabled
+- name: sample_per_symbol
+  id: variable
+  parameters:
+    comment: ''
+    value: '4'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [384, 19]
+    rotation: 0
+    state: true
+- name: sensitivity
+  id: variable
+  parameters:
+    comment: ''
+    value: 392.699m
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [619, 84]
+    rotation: 0
+    state: disabled
+- name: analog_const_source_x_0_0_0
+  id: analog_const_source_x
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    const: '1'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    type: float
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [372, 412]
+    rotation: 0
+    state: enabled
+- name: analog_random_source_x_0
+  id: analog_random_source_x
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    max: '256'
+    maxoutbuf: '0'
+    min: '0'
+    minoutbuf: '0'
+    num_samps: '1000'
+    repeat: 'True'
+    type: byte
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [128, 185]
+    rotation: 0
+    state: disabled
+- name: b_PSD_0
+  id: b_PSD
+  parameters:
+    Ensayos: '1000'
+    N: '4096'
+    Titulo: '''espectro'''
+    Ymax: 5e-6
+    affinity: ''
+    alias: ''
+    comment: ''
+    gui_hint: menu@2:0,0,1,1
+    samp_rate_audio: '22000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1213, 289]
+    rotation: 0
+    state: true
+- name: b_PSD_0_0
+  id: b_PSD
+  parameters:
+    Ensayos: '1000'
+    N: '4096'
+    Titulo: '''espectro'''
+    Ymax: 5e-6
+    affinity: ''
+    alias: ''
+    comment: ''
+    gui_hint: menu@3:0,0,1,1
+    samp_rate_audio: '22000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1042, 478]
+    rotation: 0
+    state: true
+- name: b_upconverter_cf_0
+  id: b_upconverter_cf
+  parameters:
+    Fc: 2e6
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samp_rate: f
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [685, 407]
+    rotation: 0
+    state: true
+- name: blocks_char_to_float_0
+  id: blocks_char_to_float
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    scale: '1'
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [387, 320]
+    rotation: 0
+    state: enabled
+- name: blocks_complex_to_float_0
+  id: blocks_complex_to_float
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1042, 324]
+    rotation: 0
+    state: true
+- name: blocks_packed_to_unpacked_xx_0
+  id: blocks_packed_to_unpacked_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    bits_per_chunk: '1'
+    comment: ''
+    endianness: gr.GR_MSB_FIRST
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_ports: '1'
+    type: byte
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [170, 362]
+    rotation: 0
+    state: true
+- name: blocks_vector_source_x_0
+  id: blocks_vector_source_x
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    repeat: 'True'
+    tags: '[]'
+    type: byte
+    vector: (1,0,0,1,0)
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [12, 287]
+    rotation: 0
+    state: true
+- name: digital_chunks_to_symbols_xx_0
+  id: digital_chunks_to_symbols_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    dimension: '1'
+    in_type: byte
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_ports: '1'
+    out_type: float
+    symbol_table: (1, -1)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [442, 195]
+    rotation: 0
+    state: disabled
+- name: e_VCO_fase_fc_0
+  id: epy_block
+  parameters:
+    _source_code: "\nimport numpy as np\nfrom gnuradio import gr\n\n\nclass blk(gr.sync_block):\
+      \  \n    \"\"\"Done by Homero Ortega Boada. Es un VCO dos entradas: \nin0 para\
+      \ manipular la fase, in1 para manipular la \nmagnitud. En el fondo es el equivalente\
+      \ a un generador\nde una senal exponencial compleja. Sobre la configuracion:\n\
+      cada valor de la senal en in0 es interpretada como la fase\ndeseada en radianes.\
+      \ cada valor de in0, es la magnitud deseada\"\"\"\n\n    def __init__(self):\
+      \ \n        gr.sync_block.__init__(self,\n            name='e_VCO_fase_fc',\n\
+      \            in_sig=[np.float32, np.float32],\n            out_sig=[np.complex64]\n\
+      \        )\n    def work(self, input_items, output_items):\n        in0=input_items[0]\n\
+      \        in1=input_items[1]\n        out0=output_items[0]\n        out0[:] =\
+      \ in1*np.exp(1.j*in0)\n        return len(out0)\n"
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+  states:
+    _io_cache: '(''e_VCO_fase_fc'', ''blk'', [], [(''0'', ''float'', 1), (''1'', ''float'',
+      1)], [(''0'', ''complex'', 1)], ''Done by Homero Ortega Boada. Es un VCO dos
+      entradas: \nin0 para manipular la fase, in1 para manipular la \nmagnitud. En
+      el fondo es el equivalente a un generador\nde una senal exponencial compleja.
+      Sobre la configuracion:\ncada valor de la senal en in0 es interpretada como
+      la fase\ndeseada en radianes. cada valor de in0, es la magnitud deseada'', [])'
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [551, 339]
+    rotation: 0
+    state: enabled
+- name: import_0
+  id: import
+  parameters:
+    alias: ''
+    comment: ''
+    imports: import math, numpy
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [39, 120]
+    rotation: 0
+    state: true
+- name: menu
+  id: qtgui_tab_widget
+  parameters:
+    alias: ''
+    comment: ''
+    gui_hint: 0,1,1,8
+    label0: modulada EC
+    label1: modulada PB
+    label10: Tab 10
+    label11: Tab 11
+    label12: Tab 12
+    label13: Tab 13
+    label14: Tab 14
+    label15: Tab 15
+    label16: Tab 16
+    label17: Tab 17
+    label18: Tab 18
+    label19: Tab 19
+    label2: PSD EC
+    label3: PSD PB
+    label4: Tab 4
+    label5: Tab 5
+    label6: Tab 6
+    label7: Tab 7
+    label8: Tab 8
+    label9: Tab 9
+    num_tabs: '4'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [909, 13]
+    rotation: 0
+    state: true
+- name: qtgui_time_sink_x_0
+  id: qtgui_time_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    alpha1: '1.0'
+    alpha10: '1.0'
+    alpha2: '1.0'
+    alpha3: '1.0'
+    alpha4: '1.0'
+    alpha5: '1.0'
+    alpha6: '1.0'
+    alpha7: '1.0'
+    alpha8: '1.0'
+    alpha9: '1.0'
+    autoscale: 'True'
+    axislabels: 'True'
+    color1: blue
+    color10: dark blue
+    color2: red
+    color3: green
+    color4: black
+    color5: cyan
+    color6: magenta
+    color7: yellow
+    color8: dark red
+    color9: dark green
+    comment: ''
+    ctrlpanel: 'True'
+    entags: 'True'
+    grid: 'True'
+    gui_hint: menu@0:0,0,1,1
+    label1: Signal 1
+    label10: Signal 10
+    label2: Signal 2
+    label3: Signal 3
+    label4: Signal 4
+    label5: Signal 5
+    label6: Signal 6
+    label7: Signal 7
+    label8: Signal 8
+    label9: Signal 9
+    legend: 'True'
+    marker1: '-1'
+    marker10: '-1'
+    marker2: '-1'
+    marker3: '-1'
+    marker4: '-1'
+    marker5: '-1'
+    marker6: '-1'
+    marker7: '-1'
+    marker8: '-1'
+    marker9: '-1'
+    name: '""'
+    nconnections: '1'
+    size: '1024'
+    srate: samp_rate
+    stemplot: 'False'
+    style1: '1'
+    style10: '1'
+    style2: '1'
+    style3: '1'
+    style4: '1'
+    style5: '1'
+    style6: '1'
+    style7: '1'
+    style8: '1'
+    style9: '1'
+    tr_chan: '0'
+    tr_delay: '0'
+    tr_level: '0.0'
+    tr_mode: qtgui.TRIG_MODE_FREE
+    tr_slope: qtgui.TRIG_SLOPE_POS
+    tr_tag: '""'
+    type: complex
+    update_time: '0.10'
+    width1: '1'
+    width10: '1'
+    width2: '1'
+    width3: '1'
+    width4: '1'
+    width5: '1'
+    width6: '1'
+    width7: '1'
+    width8: '1'
+    width9: '1'
+    ylabel: Amplitude
+    ymax: '1'
+    ymin: '-1'
+    yunit: '""'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1042, 185]
+    rotation: 0
+    state: true
+- name: qtgui_time_sink_x_0_0
+  id: qtgui_time_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    alpha1: '1.0'
+    alpha10: '1.0'
+    alpha2: '1.0'
+    alpha3: '1.0'
+    alpha4: '1.0'
+    alpha5: '1.0'
+    alpha6: '1.0'
+    alpha7: '1.0'
+    alpha8: '1.0'
+    alpha9: '1.0'
+    autoscale: 'True'
+    axislabels: 'True'
+    color1: blue
+    color10: dark blue
+    color2: red
+    color3: green
+    color4: black
+    color5: cyan
+    color6: magenta
+    color7: yellow
+    color8: dark red
+    color9: dark green
+    comment: ''
+    ctrlpanel: 'True'
+    entags: 'True'
+    grid: 'True'
+    gui_hint: menu@1:0,0,1,1
+    label1: Signal 1
+    label10: Signal 10
+    label2: Signal 2
+    label3: Signal 3
+    label4: Signal 4
+    label5: Signal 5
+    label6: Signal 6
+    label7: Signal 7
+    label8: Signal 8
+    label9: Signal 9
+    legend: 'True'
+    marker1: '-1'
+    marker10: '-1'
+    marker2: '-1'
+    marker3: '-1'
+    marker4: '-1'
+    marker5: '-1'
+    marker6: '-1'
+    marker7: '-1'
+    marker8: '-1'
+    marker9: '-1'
+    name: '""'
+    nconnections: '1'
+    size: '1024'
+    srate: samp_rate
+    stemplot: 'False'
+    style1: '1'
+    style10: '1'
+    style2: '1'
+    style3: '1'
+    style4: '1'
+    style5: '1'
+    style6: '1'
+    style7: '1'
+    style8: '1'
+    style9: '1'
+    tr_chan: '0'
+    tr_delay: '0'
+    tr_level: '0.0'
+    tr_mode: qtgui.TRIG_MODE_FREE
+    tr_slope: qtgui.TRIG_SLOPE_POS
+    tr_tag: '""'
+    type: float
+    update_time: '0.10'
+    width1: '1'
+    width10: '1'
+    width2: '1'
+    width3: '1'
+    width4: '1'
+    width5: '1'
+    width6: '1'
+    width7: '1'
+    width8: '1'
+    width9: '1'
+    ylabel: Amplitude
+    ymax: '1'
+    ymin: '-1'
+    yunit: '""'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1043, 399]
+    rotation: 0
+    state: true
+- name: virtual_sink_0
+  id: virtual_sink
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: EC
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [678, 177]
+    rotation: 90
+    state: true
+- name: virtual_sink_0_0
+  id: virtual_sink
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: PB
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [758, 203]
+    rotation: 90
+    state: true
+- name: virtual_source_0
+  id: virtual_source
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: EC
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [855, 280]
+    rotation: 0
+    state: true
+- name: virtual_source_0_0
+  id: virtual_source
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: PB
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [853, 441]
+    rotation: 0
+    state: true
+- name: wform
+  id: epy_module
+  parameters:
+    alias: ''
+    comment: ''
+    source_code: "import math\nimport numpy\n#######################################################\n\
+      ##        Hecho por Homero Ortega Boada              ##\n##        comdiguis@saber.uis.edu.co\
+      \                 ##\n##     Universidad Industrial de Santander           ##\n\
+      #######################################################\n\n#######################################################\n\
+      ##               Forma rectangular                   ##\n#######################################################\
+      \                       \ndef rect(Sps,ntaps):\n    h=ntaps*[0,]\n    for n\
+      \ in range(Sps):\n        k=int(ntaps/2) # esto es para que h[n] quede centrada\
+      \ en la mitad del vector\n        h[k-n]=1.\n    return h\n\n#######################################################\n\
+      ##               Forma de Nyquist                    ##\n#######################################################\
+      \                       \ndef nyq(Sps,ntaps):\n    ntaps_min=-int(ntaps/2)\n\
+      \    ntaps_max=abs(ntaps_min)-1+int(math.ceil(ntaps/2.-abs(ntaps_min)))\n  \
+      \  h=ntaps*[0,]\n    for n in range(ntaps):\n        k=n-ntaps/2. # esto es\
+      \ para que h[n] quede centrada en la mitad del vector\n        h[n]=numpy.sinc(k/Sps)\n\
+      \    Amp=numpy.amax(h)\n    return h/Amp\n\n#######################################################\n\
+      ##               Forma Coseno Alzado                 ##\n#######################################################\
+      \                       \ndef rcos(Sps,ntaps,beta):\n    if beta==0:\n     \
+      \   h=nyq(Sps,ntaps)\n    else:\n        h=ntaps*[0,]\n        for n in range(ntaps):\n\
+      \            k=n-ntaps/2. # esto es para que h[n] quede centrada en la mitad\
+      \ del vector\n            if abs(k)==Sps/(2.*beta):\n                h[n]=numpy.sinc(1./(2.*beta))*math.pi/4.\n\
+      \            else:\n                h[n]=numpy.sinc(k/Sps)*math.cos(beta*k*math.pi/Sps)/(1.-(2.*beta*k/Sps)**2)\
+      \                \n    Amp=numpy.amax(h)\n    return h/Amp\n\n#######################################################\n\
+      ##            Forma Raiz de Coseno Alzado            ##\n#######################################################\
+      \                       \n\ndef rrcos(Sps,ntaps,beta):\n    if beta==0:\n  \
+      \      h=nyq(Sps,ntaps)\n    else:\n        h=ntaps*[0,]\n        beta4=4.*beta\n\
+      \        for n in range(ntaps):\n            k=n-ntaps/2. # esto es para que\
+      \ h[n] quede centrada en la mitad del vector\n            if k==0:\n       \
+      \         h[n]=1+beta*(4./math.pi-1.)\n            elif abs(k)==Sps/beta4:\n\
+      \                ha=(1.+2./math.pi)*math.sin(math.pi/beta4)\n              \
+      \  hb=(1.-2./math.pi)*math.cos(math.pi/beta4)\n                h[n]=(ha+hb)*beta/math.sqrt(2.)\n\
+      \            else:\n                ks=k/Sps\n                kspi=math.pi*ks\n\
+      \                Num=math.sin(kspi*(1-beta))+beta4*ks*math.cos(kspi*(1+beta))\n\
+      \                Den=kspi*(1.-(beta4*ks)**2)\n                h[n]=Num/Den \
+      \               \n    Amp=numpy.amax(h)\n    return h/Amp\n"
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [784, 15]
+    rotation: 0
+    state: enabled
+
+connections:
+- [analog_const_source_x_0_0_0, '0', e_VCO_fase_fc_0, '1']
+- [analog_random_source_x_0, '0', blocks_packed_to_unpacked_xx_0, '0']
+- [b_upconverter_cf_0, '0', virtual_sink_0_0, '0']
+- [blocks_char_to_float_0, '0', e_VCO_fase_fc_0, '0']
+- [blocks_complex_to_float_0, '0', b_PSD_0, '0']
+- [blocks_packed_to_unpacked_xx_0, '0', blocks_char_to_float_0, '0']
+- [blocks_packed_to_unpacked_xx_0, '0', digital_chunks_to_symbols_xx_0, '0']
+- [blocks_vector_source_x_0, '0', blocks_packed_to_unpacked_xx_0, '0']
+- [e_VCO_fase_fc_0, '0', b_upconverter_cf_0, '0']
+- [e_VCO_fase_fc_0, '0', virtual_sink_0, '0']
+- [virtual_source_0, '0', blocks_complex_to_float_0, '0']
+- [virtual_source_0, '0', qtgui_time_sink_x_0, '0']
+- [virtual_source_0_0, '0', b_PSD_0_0, '0']
+- [virtual_source_0_0, '0', qtgui_time_sink_x_0_0, '0']
+
+metadata:
+  file_format: 1
